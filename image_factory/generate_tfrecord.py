@@ -25,7 +25,7 @@ from PIL import Image
 from object_detection.utils import dataset_util
 from collections import namedtuple, OrderedDict
 
-os.chdir('D:\\\simple_object_detection\\object_detection\\image_factory')
+os.chdir('D:\\simple_object_detection\\image_factory')
 
 flags = tf.app.flags
 flags.DEFINE_string('csv_input', 'D:\\simple_object_detection\\image_factory\\images_output\\tv_vehicle_labels.csv', 'Path to the CSV input')
