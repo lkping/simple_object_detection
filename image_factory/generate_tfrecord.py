@@ -25,20 +25,18 @@ from PIL import Image
 from object_detection.utils import dataset_util
 from collections import namedtuple, OrderedDict
 
-os.chdir('D:\\tensorflow-model\\models\\research\\object_detection\\')
+os.chdir('D:\\\simple_object_detection\\object_detection\\image_factory')
 
 flags = tf.app.flags
-flags.DEFINE_string('csv_input', '', 'Path to the CSV input')
-flags.DEFINE_string('output_path', '', 'Path to output TFRecord')
+flags.DEFINE_string('csv_input', 'D:\\simple_object_detection\\image_factory\\images_output\\tv_vehicle_labels.csv', 'Path to the CSV input')
+flags.DEFINE_string('output_path', 'D:\\simple_object_detection\\image_factory\\images_output\\train.record', 'Path to output TFRecord')
 FLAGS = flags.FLAGS
 
 
 # TO-DO replace this with label map
 def class_text_to_int(row_label):
-    if row_label == 'tv':
+    if row_label == 'mood':
         return 1
-    elif row_label == 'vehicle':
-        return 2
     else:
         None
 
@@ -92,7 +90,7 @@ def create_tf_example(group, path):
 
 def main(_):
     writer = tf.python_io.TFRecordWriter(FLAGS.output_path)
-    path = os.path.join(os.getcwd(), 'images')
+    path = os.path.join(os.getcwd(), 'images_output')
     examples = pd.read_csv(FLAGS.csv_input)
     grouped = split(examples, 'filename')
     for group in grouped:
